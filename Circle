@@ -1,0 +1,93 @@
+package shapes;
+
+//Circle inherits from Shape
+public class Circle extends Shape{
+	
+	private  float radius;
+	
+	private  float member;
+	
+	//Default constructor for Circle
+	public Circle()
+	{
+		super("Circle");
+		
+		radius = 0;
+		
+		member = 0;
+	}
+	
+	//Parameterized constructor for Circle
+	public Circle(float initialRadius)
+	{
+		super("Circle");
+		
+		radius = initialRadius;
+	}
+	
+	//Computes the area of a circle and returns area. Pi is truncated to 3.14
+	public float computeArea()
+	{
+		member = (float)(Math.pow(radius,2) * 3.14);
+		
+		return member;
+	}
+	//Sets the value of radius
+	public void setRadius(float newRadius)
+	{
+		radius = newRadius;
+	}
+	
+	//Gets value of radius
+	public float getRadius()
+	{
+		return radius;
+	}
+	
+	public String writeOutput()
+	{
+		//Conditional statements are printed based on the user input
+		if (getRadius() > 5)
+		{
+			System.out.println("That is one big circle!");
+			
+			System.out.println();
+			
+			return ("That is one big circle!");
+		}
+		else if(getRadius() <= 2 && getRadius() > 0)
+		{
+			System.out.println("Small circle.");
+			
+			System.out.println();
+			
+			return ("Small circle.");
+		}
+		else if(getRadius() == 3)
+		{
+			System.out.println("I've got the whole world in my hand.");
+			
+			System.out.println();
+			
+			return ("I've got the whole world in my hand.");
+		}
+		
+		else if (getRadius() <= 5 || getRadius() > 2)
+		{
+			System.out.println("Meh, Regular Circle.");
+			
+			System.out.println();
+			
+			return ("Meh, Regular Circle.");
+		}
+		else
+		{
+			System.out.println("Error.");
+			
+			System.out.println();
+			
+			return ("Error.");
+		}
+	}
+}
+
