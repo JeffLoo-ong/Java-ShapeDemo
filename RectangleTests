@@ -1,0 +1,88 @@
+package shapes;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class RectangleTests {
+
+	@Test
+	//Tests the computeArea() method of Rectangle for accuracy with a tolerance of +/- 0.01.
+	public void areaTest()
+	{
+		//Create a new Rectangle with a Length of 1 and a Width of 1, Length of 1 and Width of 2, and Length of 2 and Width of 1
+		Rectangle a = new Rectangle(1,1);
+		assertEquals("Length = 1 and Width = 1", 1, a.computeArea(),0.01);
+		
+		Rectangle b = new Rectangle(1,2);
+		assertEquals("Length = 1 and Width = 2", 2, b.computeArea(), 0.01);
+		
+		Rectangle c = new Rectangle(2,1);
+		assertEquals("Length = 2 and Width = 1", 2, c.computeArea(), 0.01);
+	}
+	
+	@Test
+	//Tests to make sure that if a Rectangle object is created, the shape name is "Rectangle"
+	public void nameTest()
+	{
+		//Using the default constructor, the shape name should be defined as "Rectangle"
+		Rectangle a = new Rectangle();
+		assertEquals("Default Constructor","Rectangle", a.getShape());
+		//Using the parameterized constructor, the shape name should be defined as "Rectangle"
+		Rectangle b = new Rectangle(1,1);
+		assertEquals("Parameterized Constructor","Rectangle", b.getShape());
+	}
+	
+	@Test
+	//Tests to see if Length is bigger than Width it prints out "Tall Rectangle"
+	public void isTall()
+	{
+		Rectangle a = new Rectangle(2,1);
+		assertEquals("Length = 2 and Width = 1","Tall Rectangle", a.writeOutput());
+		
+		Rectangle b = new Rectangle(6,4);
+		assertEquals("Length = 6 and Width = 4","Tall Rectangle", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if the Length is less than Width it prints out "Tall Rectangle"	
+	public void isFat()
+	{
+		Rectangle a = new Rectangle(1,2);
+		assertEquals("Length = 1 and Width = 2","Fat Rectangle", a.writeOutput());
+		
+		Rectangle b = new Rectangle(2,4);
+		assertEquals("Length = 2 and Width = 4","Fat Rectangle", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if Length is equal to Width that it prints out "Square"
+	public void isSquare()
+	{
+		Rectangle a = new Rectangle(3,3);
+		assertEquals("Length = 3 and Width = 3","This is a Square!", a.writeOutput());
+		
+		Rectangle b = new Rectangle(6,6);
+		assertEquals("Length = 6 and Width = 6","This is a Square!", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if a Rectangle of 0 or a negative number (in this case -1) prints out "Error"
+	public void isError()
+	{
+		Rectangle a = new Rectangle(0,0);
+		assertEquals("Length = 0 and Width = 0","Error.", a.writeOutput());
+		
+		Rectangle b = new Rectangle(0,1);
+		assertEquals("Length = 0 and Width = 1","Error.", b.writeOutput());
+		
+		Rectangle c = new Rectangle(1,0);
+		assertEquals("Length = 1 and Width = 0","Error.", c.writeOutput());
+		
+		Rectangle d = new Rectangle(-1,1);
+		assertEquals("Length = -1 and Width = 1", "Error.", d.writeOutput());
+		
+		Rectangle e = new Rectangle(1,-1);
+		assertEquals("Length = 1 and Width = -1", "Error.", e.writeOutput());
+	}
+}
