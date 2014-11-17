@@ -1,0 +1,120 @@
+package shapes;
+
+public class Trapezoid extends Shape {
+
+	private float width1;
+	
+	private float width2;
+	
+	private float height;
+	
+	private float member;
+	
+	//Default Constructor for Trapezoid. Returns "0" for all parameters and assigns Trapezoid to shapeName
+	public Trapezoid()
+	{
+		super("Trapezoid");
+		
+		width1 = 0;
+		
+		width2 = 0;
+		
+		height = 0;
+		
+		member = 0;
+	}
+	
+	//Parameterized Constructor for Trapezoid. Computes the area of shape based on parameters.
+	public Trapezoid(float initialWidth1, float initialWidth2, float initialHeight)
+	{
+		super("Trapezoid");
+		
+		width1 = initialWidth1;
+		
+		width2 = initialWidth2;
+		
+		height = initialHeight;
+		
+	}
+	
+	//Computes the area of Trapezoid and returns it.
+	public float computeArea()
+	{
+		member = ((width1+width2)/2)*height;
+		return member;
+	}
+	
+	//Sets the first width
+	public void setWidth1(float newWidth1)
+	{
+		width1 = newWidth1;
+	}
+	
+	//Sets the second width
+	public void setWidth2(float newWidth2)
+	{
+		width2 = newWidth2;
+	}
+	
+	//Sets the height
+	public void setHeight(float newHeight)
+	{
+		height = newHeight;
+	}
+	
+	//Returns the first width
+	public float getWidth1()
+	{
+		return width1;
+	}
+	
+	//Returns the second width
+	public float getWidth2()
+	{
+		return width2;
+	}
+	
+	//Returns the height
+	public float getHeight()
+	{
+		return height;
+	}
+
+	//Conditional statements are printed based on the user input. Currently prints out a description even if an InputMismatchException is thrown.
+	public String writeOutput()
+	{	
+		if(getWidth1() > getWidth2() && getHeight() < getWidth2() && getWidth1() > 0 && getWidth2() > 0)
+		{
+			System.out.println("Fat Trapezoid");
+			
+			return ("Fat Trapezoid");
+		}
+		else if (getWidth1() > getWidth2() && getHeight() > getWidth2() && getWidth1() > 0 && getWidth2() > 0)
+		{
+			System.out.println("Skinny Trapezoid");
+			
+			return ("Skinny Trapezoid");
+		}
+
+		else if (getWidth2() < getWidth1() || getWidth2() > getWidth1() && getWidth1() > 0 && getWidth2() > 0)
+		{
+			System.out.println("Upside Down Trapezoid");
+			
+			return ("Upside Down Trapezoid");
+		}
+		else if (getWidth1() == getWidth2() && getWidth1() > 0 && getWidth2() > 0)
+		{
+			System.out.println("Parallelogram!");
+			
+			return ("Parallelogram!");
+		}
+		
+		else
+		{
+			System.out.println("Error.");
+			
+			return ("Error.");
+		}
+		
+	}
+}
