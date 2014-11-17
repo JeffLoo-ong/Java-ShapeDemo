@@ -1,0 +1,91 @@
+package shapes;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class CircleTests {
+
+
+	@Test
+	//Tests the computeArea() method of circle for accuracy with a tolerance of +/- 0.01.
+	public void areaTest()
+	{
+		//Create a new circle with radius 1.
+		Circle c = new Circle(1);
+		//This test passes if the area calculated is 3.14
+		assertEquals("Radius of 1",3.14,c.computeArea(),0.01);
+		//Create a new circle with radius 10.
+		Circle d = new Circle(10);
+		//This test passes if the area calculated is 314
+		assertEquals("Radius of 10",314,d.computeArea(),0.01);
+		//Create a new circle with radius 0.1
+		Circle e = new Circle((float) 0.1);
+		//This test passes if the area calculated is 0.0314
+		assertEquals("Radius of 0.1", .0314, e.computeArea(),0.01);
+	}
+	
+	@Test
+	//Tests to make sure that if a circle object is created, the shape name is "Circle"
+	public void nameTest()
+	{
+		//Using the default constructor, the shape name should be defined as "Circle"
+		Circle c = new Circle();
+		assertEquals("Default Constructor","Circle",c.getShape());
+		//Using the parameterized constructor, the shape name should be defined as "Circle"
+		Circle d = new Circle(5);
+		assertEquals("Parameterized Constructor","Circle",d.getShape());
+	}
+	
+	@Test
+	//Tests to see if a circle with a radius bigger than 5 prints out "That is one big circle!"
+	public void isBig()
+	{
+		Circle c = new Circle(6);
+		assertEquals("Radius of 6","That is one big circle!",c.writeOutput());
+		
+		Circle d = new Circle(100);
+		assertEquals("Radius of 100","That is one big circle!", d.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if a circle with a radius of 3 prints out "I've got the whole world in my hand."
+	public void isWorld()
+	{
+		Circle a = new Circle(3);
+		assertEquals("Radius of 3","I've got the whole world in my hand.",a.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if a circle with a radius of 2 and 1 prints out " Small circle."
+	public void isSmall()
+	{
+		Circle a = new Circle(2);
+		assertEquals("Radius of 2", "Small circle.", a.writeOutput());
+		
+		Circle b = new Circle(1);
+		assertEquals("Radius of 1", "Small circle.", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if a circle with radius 5 and 4 prints out "Meh, Regular Circle."
+	public void isMeh()
+	{
+		Circle a = new Circle(4);
+		assertEquals("Radius of 4","Meh, Regular Circle.", a.writeOutput());
+	
+		Circle e = new Circle(5);
+		assertEquals("Radius of 5", "Meh, Regular Circle.", e.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if a circle of 0 or negative number (in this case -1) prints out "Error"
+	public void isError()
+	{
+		Circle a = new Circle(0);
+		assertEquals("Radius of 0", "Error.", a.writeOutput());
+		
+		Circle b = new Circle(-1);
+		assertEquals("Radius of -1", "Error.", b.writeOutput());
+	}
+}
