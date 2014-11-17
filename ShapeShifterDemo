@@ -1,0 +1,208 @@
+package shapes;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ShapeshifterDemo {
+
+	public static void main(String[] args) {
+
+		// Variable isDone is initialized to false and is false until the user
+		// types in "Done" where it
+		// exits the loop.
+		boolean isDone = false;
+
+		// Will continually prompt the user to input a shape to calculate the
+		// area of until "Done" is typed.
+		while (isDone != true){
+
+			Scanner keyboard = new Scanner(System.in);
+
+			// Next 3 lines of code are repeated after inputs
+			System.out.println("What shape would you like to get the area of (Circle, Rectangle, Trapezoid, or Triangle)?");
+
+			System.out.println("Type Done to exit.");
+
+			String shapeName = keyboard.next();
+
+			// Within each case, it is possible to throw an error if it receives
+			// any other input than a float
+
+			switch (shapeName) {
+
+			case "Circle":
+
+				System.out.print("Please enter the radius: ");
+				try {
+					Circle c = new Circle((keyboard.nextFloat()));
+					System.out.println("Shape: " + c.getShape());
+
+					System.out.println("Area: " + c.computeArea());
+
+					c.writeOutput();
+
+					System.out.println('\n');
+				}
+
+				catch (InputMismatchException ime) {
+					System.out.println("Invalid Entry. Please Try Again.\n");
+				}
+
+				break;
+
+			case "Rectangle":
+
+				float length = 0;
+				float width = 0;
+
+				System.out.print("Please enter the length: ");
+
+				try {
+					length = (keyboard.nextFloat());
+
+					System.out.println();
+				}
+
+				catch (InputMismatchException ime) {
+					System.out.println("Invalid Entry. Please Try Again.\n");
+				}
+
+				System.out.print("Please enter the width: ");
+
+				try {
+					width = (keyboard.nextFloat());
+
+					System.out.println();
+				}
+
+				catch (InputMismatchException ime) {
+					System.out.println("Invalid Entry. Please Try Again.\n");
+				}
+
+				Rectangle r = new Rectangle(length, width);
+
+				System.out.println("Shape: " + r.getShape());
+
+				System.out.println("Area: " + r.computeArea());
+
+				r.writeOutput();
+
+				System.out.println('\n');
+
+				break;
+
+			case "Trapezoid":
+
+				float width1 = 0;
+				float width2 = 0;
+				float height = 0;
+
+				System.out.print("Please enter the first width: ");
+
+				try {
+					width1 = keyboard.nextFloat();
+
+					System.out.println();
+				}
+
+				catch (InputMismatchException ime) {
+					System.out.println("Invalid entry. Please Try Again.\n");
+				}
+
+				System.out.print("Please enter the second width: ");
+
+				try {
+					width2 = keyboard.nextFloat();
+
+					System.out.println();
+				} catch (InputMismatchException ime) {
+					System.out.println("Invalid entry. Please Try Again.\n");
+				}
+
+				System.out.print("Please enter the height: ");
+
+				try {
+					height = keyboard.nextFloat();
+
+					System.out.println();
+				}
+
+				catch (InputMismatchException ime) {
+					System.out.println("Invalid entry. Please Try Again.\n");
+				}
+
+				Trapezoid t = new Trapezoid(width1, width2, height);
+
+				System.out.println("Shape: " + t.getShape());
+
+				System.out.println("Area: " + t.computeArea());
+
+				t.writeOutput();
+
+				System.out.println();
+
+				break;
+
+			case "Triangle":
+
+				float base = 0;
+				float height1 = 0;
+
+				System.out.print("Please enter the base: ");
+				try {
+					base = keyboard.nextFloat();
+
+					System.out.println();
+				}
+
+				catch (InputMismatchException ime) {
+					System.out.println("Invalid entry. Please Try Again.\n");
+				}
+
+				System.out.print("Please enter the height: ");
+
+				try {
+					height1 = keyboard.nextFloat();
+
+					System.out.println();
+				}
+
+				catch (InputMismatchException ime) {
+					System.out.println("Invalid entry. Please Try Again.\n");
+				}
+
+				Triangle d = new Triangle(base, height1);
+
+				System.out.println("Shape: " + d.getShape());
+
+				System.out.println("Area: " + d.computeArea());
+
+				d.writeOutput();
+
+				System.out.println();
+
+				break;
+
+			// This allows the user to "exit" the program.
+			case "Done":
+
+				System.out.println("Thank you, come again!");
+
+				isDone = true;
+
+				keyboard.close();
+
+				break;
+
+			// Default case will trigger if user enters anything else but
+			// Square, Triangle, Rectangle, or
+			// Trapezoid.
+			default:
+
+				System.out.println("Invalid entry, please try again.\n");
+
+			}
+
+		}
+	}
+}
