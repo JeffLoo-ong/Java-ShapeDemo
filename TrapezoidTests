@@ -1,0 +1,103 @@
+package shapes;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TrapezoidTests {
+
+
+	@Test
+	//Tests the computeArea() method of Trapezoid for accuracy with a tolerance of +/- 0.01.
+	public void areaTest()
+	{
+		//Create a new Trapezoid with a width1 of 1, width2 of 1, and height of 1.
+		Trapezoid a = new Trapezoid(1,1,1);
+		assertEquals("Widths 1 & 2 = 1 and Height = 1", 1, a.computeArea(),0.01);
+		
+		Trapezoid b = new Trapezoid(1,2,1);
+		assertEquals("Width1 = 1, Width2 = 2, Height = 1",(float)1.5, b.computeArea(), 0.01);
+		
+		Trapezoid c = new Trapezoid(2,1,1);
+		assertEquals("Width1 = 2, Width2 = 1, Height = 1",(float)1.5, c.computeArea(), 0.01);
+		
+		Trapezoid d = new Trapezoid (1,1,2);
+		assertEquals("Widths 1 & 2 and Height = 2",(float)2.0, d.computeArea(), 0.01);
+	}
+	
+	@Test
+	//Tests to make sure that if a Trapezoid object is created, the shape name is "Trapezoid"
+	public void nameTest()
+	{
+		//Using the default constructor, the shape name should be defined as "Trapezoid"
+		Trapezoid a = new Trapezoid();
+		assertEquals("Default Constructor","Trapezoid", a.getShape());
+		//Using the parameterized constructor, the shape name should be defined as "Trapezoid"
+		Trapezoid b = new Trapezoid(1,1,1);
+		assertEquals("Parameterized Constructor","Trapezoid", b.getShape());
+	}
+	
+	@Test
+	//Tests to see if a Width1 is greater than Width2 and the Height is less than Width2
+	//it prints out "Fat Trapezoid"
+	public void isFat()
+	{
+		Trapezoid a = new Trapezoid(3,2,1);
+		assertEquals("Width1 = 3, Width2 = 2, Height = 1","Fat Trapezoid", a.writeOutput());
+		
+		Trapezoid b = new Trapezoid(6,4,2);
+		assertEquals("Width1 = 6, Width2 = 4, Height = 2","Fat Trapezoid", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if Width1 is greater than Width2 and the Height is greater than Width2
+	//it prints out "Skinny Trapezoid"	
+	public void isSkinny()
+	{
+		Trapezoid a = new Trapezoid(3,1,2);
+		assertEquals("Width1 = 3, Width2 = 1, Height = 2","Skinny Trapezoid", a.writeOutput());
+		
+		Trapezoid b = new Trapezoid(6,2,4);
+		assertEquals("Width1 = 6, Width2 = 2, Height = 4","Skinny Trapezoid", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if width2 is less than width1 AND the height is equal to width2 
+	//that it prints out "Upside Down Trapezoid" 
+	public void isUpsideDown()
+	{
+		Trapezoid a = new Trapezoid(3,1,1);
+		assertEquals("Width1 = 3, Width2 = 1, Height = 1","Upside Down Trapezoid", a.writeOutput());
+		
+		Trapezoid b = new Trapezoid(6,2,2);
+		assertEquals("Width1 = 6, Width2 = 2, Height = 1","Upside Down Trapezoid", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if width2 is equal to width1 that it prints out "Parallelogram"
+	public void isParallelogram()
+	{
+		Trapezoid a = new Trapezoid(3,3,1);
+		assertEquals("Width1 = 3, Width2 = 3, Height = 1","Parallelogram!", a.writeOutput());
+		
+		Trapezoid b = new Trapezoid(6,6,2);
+		assertEquals("Width1 = 6, Width2 = 6, Height = 1","Parallelogram!", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if a Trapezoid has any parameters of 0 or a negative number (in this case -1) prints out "Error"
+	public void isError()
+	{
+		Trapezoid a = new Trapezoid(0,0,0);
+		assertEquals("Width1 = 0, Width2 = 0, Height = 0","Error.", a.writeOutput());
+		
+		Trapezoid b = new Trapezoid(0,1,0);
+		assertEquals("Width1 = 0, Width2 = 1, Height = 0","Error.", b.writeOutput());
+		
+		Trapezoid c = new Trapezoid(0,0,1);
+		assertEquals("Width1 = 0, Width2 = 0, Height = 1","Error.", c.writeOutput());
+		
+		Trapezoid d = new Trapezoid(1,0,0);
+		assertEquals("Width1 = 1, Width2 = 0, Height = 0","Error.", d.writeOutput());
+	}
+}
