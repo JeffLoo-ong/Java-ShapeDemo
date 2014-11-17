@@ -1,0 +1,96 @@
+package shapes;
+
+public class Rectangle extends Shape {
+	
+	private  float length;
+	
+	private  float width;
+	
+	private float member;
+	
+	
+	//Default Constructor for Rectangle
+	public Rectangle()
+	{
+		super("Rectangle");
+		
+		length = 0;
+		
+		width = 0;
+		
+		member = 0;
+		
+	}
+	
+	//Parameterized Constructor for Rectangle
+	public Rectangle(float initialLength, float initialWidth)
+	{
+		super("Rectangle");
+		
+		length = initialLength;
+		
+		width = initialWidth;
+		
+	}
+	
+	//Compute area of Rectangle and return it in variable member
+	public float computeArea()
+	{
+		member = length*width;
+		
+		return member;
+	}
+	
+	//Sets the length
+	public void setLength(float newLength)
+	{
+		length = newLength;
+	}
+	
+	//Sets the width
+	public void setWidth(float newWidth)
+	{
+		width = newWidth;
+	}
+	
+	//Gets the length
+	public float getLength()
+	{
+		return length;
+	}
+	
+	//Gets the width
+	public float getWidth()
+	{
+		return width;
+	}
+
+	//Conditional statements are printed based on the user input
+	public String writeOutput()
+	{
+		if (getWidth()<getLength() && getWidth()>0 && getLength()>0)
+		{
+			System.out.println("Tall Rectangle");
+			
+			return ("Tall Rectangle");
+		}
+		else if(getWidth()>getLength() && getWidth()>0 && getLength()>0)
+		{
+			System.out.println("Fat Rectangle");
+			
+			return ("Fat Rectangle");
+		}
+		else if(getWidth()==getLength() && getWidth()>0 && getLength()>0)
+		{
+			System.out.println("This is a Square!");
+			
+			return ("This is a Square!");
+		}
+		else
+		{
+			System.out.println("Error.");
+			
+			return ("Error.");
+		}
+	}
+}
