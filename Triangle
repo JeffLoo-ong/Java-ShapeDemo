@@ -1,0 +1,93 @@
+package shapes;
+
+public class Triangle extends Shape {
+	
+	
+	private float base;
+	
+	private float height;
+	
+	private float member;
+	
+	
+	//Default Constructor for Triangle. Returns "0" for all parameters and assigns Triangle to shapeName
+	public Triangle()
+	{
+		super("Triangle");
+		base = 0;
+		
+		height = 0;
+		
+		member = 0;
+	}
+	
+	//Parameterized Constructor for Triangle
+	public Triangle (float initialBase, float initialHeight)
+	{
+		super("Triangle");
+		
+		base = initialBase;
+		
+		height = initialHeight;
+	}
+	
+	//Computes the area of a triangle and returns it in variable member.
+	public float computeArea()
+	{
+		member = (base*height)/2;
+		return member;
+	}
+	
+	//Sets the height
+	public void setHeight(float newHeight)
+	{
+		height = newHeight;
+	}
+	
+	//Sets the base
+	public void setBase(float newBase)
+	{
+		base = newBase;
+	}
+	
+	//Returns height
+	public float getHeight()
+	{
+		return height;
+	}
+	
+	//Returns base
+	public float getBase()
+	{
+		return base;
+	}
+	
+	//Conditional statements are printed based on the user input
+	public String writeOutput()
+	{
+		if (getBase() > getHeight() && getBase()>0 && getHeight()>0)
+		{
+			System.out.println("Fat Triangle");
+			
+			return ("Fat Triangle");
+		}
+		else if (getBase() < getHeight() && getBase()>0 && getHeight()>0)
+		{
+			System.out.println("Tall Triangle");
+			
+			return ("Tall Triangle");
+		}
+		else if (getBase() == getHeight() && getBase()>0 && getHeight()>0)
+		{
+			System.out.println("Isosceles Triangle");
+			
+			return ("Isosceles Triangle");
+		}
+		else
+		{
+			System.out.println("Error.");
+			
+			return ("Error.");
+		}
+	}
+}
