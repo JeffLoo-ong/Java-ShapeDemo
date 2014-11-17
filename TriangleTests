@@ -1,0 +1,95 @@
+package shapes;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TriangleTests {
+
+	@Test
+	//Tests the computeArea() method of Triangle for accuracy with a tolerance of +/- 0.01.
+	public void areaTest()
+	{
+		//Create a new Triangle with a base of 1 and a height of 1, base of 1 and height of 2, and base of 2 and height of 1
+		Triangle a = new Triangle(1,1);
+		assertEquals("Base = 1 and Height = 1", 0.5, a.computeArea(),0.01);
+		
+		Triangle b = new Triangle(1,2);
+		assertEquals("Base = 1 and Height = 2", 1, b.computeArea(), 0.01);
+		
+		Triangle c = new Triangle(2,1);
+		assertEquals("Base = 2 and Height = 1", 1, c.computeArea(), 0.01);
+	}
+	
+	@Test
+	//Tests to make sure that if a Triangle object is created, the shape name is "Triangle"
+	public void nameTest()
+	{
+		//Using the default constructor, the shape name should be defined as "Triangle"
+		Triangle a = new Triangle();
+		assertEquals("Default Constructor","Triangle", a.getShape());
+		//Using the parameterized constructor, the shape name should be defined as "Triangle"
+		Triangle b = new Triangle(1,1);
+		assertEquals("Parameterized Constructor","Triangle", b.getShape());
+	}
+	
+	@Test
+	//Tests to see if base is bigger than height it prints out "Fat Triangle"
+	public void isFat()
+	{
+		Triangle a = new Triangle(2,1);
+		assertEquals("Base = 2 and Height = 1","Fat Triangle", a.writeOutput());
+		
+		Triangle b = new Triangle(6,4);
+		assertEquals("Base = 6 and Height = 4","Fat Triangle", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if the base is less than height it prints out "Tall Triangle"	
+	public void isTall()
+	{
+		Triangle a = new Triangle(1,2);
+		assertEquals("Base = 1 and Height = 2","Tall Triangle", a.writeOutput());
+		
+		Triangle b = new Triangle(2,4);
+		assertEquals("Base = 2 and Height = 4","Tall Triangle", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if base is equal to height that it prints out "Isosceles"
+	public void isIsosceles()
+	{
+		Triangle a = new Triangle(3,3);
+		assertEquals("Base = 3 and Height = 3","Isosceles Triangle!", a.writeOutput());
+		
+		Triangle b = new Triangle(6,6);
+		assertEquals("Base = 6 and Height = 6","Isosceles Triangle!", b.writeOutput());
+	}
+	
+	@Test
+	//Tests to see if a Triangle of 0 or a negative number (in this case -1) prints out "Error"
+	public void isError()
+	{
+		Triangle a = new Triangle(0,0);
+		assertEquals("Base = 0 and Height = 0","Error.", a.writeOutput());
+		
+		Triangle b = new Triangle(0,1);
+		assertEquals("Base = 0 and Height = 1","Error.", b.writeOutput());
+		
+		Triangle c = new Triangle(1,0);
+		assertEquals("Base = 1 and Height = 0","Error.", c.writeOutput());
+		
+		Triangle d = new Triangle(-1,1);
+		assertEquals("Base = -1 and Height = 1", "Error.", d.writeOutput());
+		
+		Triangle e = new Triangle(1,-1);
+		assertEquals("Base = 1 and Height = -1", "Error.", e.writeOutput());
+		
+		Triangle f = new Triangle(-1,0);
+		assertEquals("Base = -1 and Height = 0", "Error.", f.writeOutput());
+		
+		Triangle g = new Triangle(0,-1);
+		assertEquals("Base = 0 and Height = -1", "Error.", g.writeOutput());
+		
+	}
+}
