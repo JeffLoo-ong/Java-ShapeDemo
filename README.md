@@ -1,4 +1,1 @@
-Java-Projects
-=============
-
-Java Stuff
+Java Project for Demo purposes 
